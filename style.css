@@ -3,7 +3,7 @@ body {
 
   font-family: Arial;
 
-  background: #f4f4f4;
+  background: #f5f5f5;
 
   margin: 0;
 
@@ -25,18 +25,13 @@ body {
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.top {
+.header {
 
   display: flex;
 
   justify-content: space-between;
 
   align-items: center;
-}
-
-h1, h2 {
-
-  color: #333;
 }
 
 input {
@@ -76,14 +71,9 @@ button:hover {
   opacity: 0.8;
 }
 
-.produk button {
+#daftarProduk button {
 
   background: #28a745;
-}
-
-.aksi button {
-
-  background: #ff9800;
 }
 
 li {
@@ -116,12 +106,6 @@ li button {
   background: #2c2c2c;
 }
 
-.dark h1,
-.dark h2 {
-
-  color: white;
-}
-
 .dark input {
 
   background: #444;
@@ -138,7 +122,7 @@ li button {
 
 @media(max-width:600px){
 
-  .top {
+  .header {
 
     flex-direction: column;
   }
