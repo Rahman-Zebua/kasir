@@ -7,7 +7,9 @@ function buatProduk() {
     document.getElementById("namaProduk").value;
 
   const harga =
-    parseInt(document.getElementById("hargaProduk").value);
+    parseInt(
+      document.getElementById("hargaProduk").value
+    );
 
   if (!nama || !harga) {
 
@@ -16,8 +18,8 @@ function buatProduk() {
     return;
   }
 
-  const divProduk =
-    document.querySelector(".produk");
+  const daftar =
+    document.getElementById("daftarProduk");
 
   const tombol =
     document.createElement("button");
@@ -27,17 +29,17 @@ function buatProduk() {
 
   tombol.onclick = function () {
 
-    tambahProduk(nama, harga);
+    tambahKeKeranjang(nama, harga);
   };
 
-  divProduk.appendChild(tombol);
+  daftar.appendChild(tombol);
 
   document.getElementById("namaProduk").value = "";
 
   document.getElementById("hargaProduk").value = "";
 }
 
-function tambahProduk(nama, harga) {
+function tambahKeKeranjang(nama, harga) {
 
   const keranjang =
     document.getElementById("keranjang");
@@ -75,24 +77,12 @@ function updateTotal() {
     `Total: Rp${total.toLocaleString("id-ID")}`;
 }
 
-function resetKasir() {
-
-  document.getElementById("keranjang").innerHTML = "";
-
-  total = 0;
-
-  updateTotal();
-
-  document.getElementById("kembalian").innerText =
-    "Kembalian: Rp0";
-
-  document.getElementById("bayar").value = "";
-}
-
 function hitungKembalian() {
 
   const bayar =
-    parseInt(document.getElementById("bayar").value);
+    parseInt(
+      document.getElementById("bayar").value
+    );
 
   if (!bayar) {
 
@@ -107,57 +97,56 @@ function hitungKembalian() {
     `Kembalian: Rp${kembali.toLocaleString("id-ID")}`;
 }
 
+function resetKasir() {
+
+  document.getElementById("keranjang").innerHTML = "";
+
+  total = 0;
+
+  updateTotal();
+
+  document.getElementById("kembalian").innerText =
+    "Kembalian: Rp0";
+
+  document.getElementById("bayar").value = "";
+}
+
 function toggleDarkMode() {
 
   document.body.classList.toggle("dark");
 }
 
-function simpanTransaksi() {
+function cetakStruk() {
 
-  let isiKeranjang = "";
+  let isi = "";
 
   const items =
     document.querySelectorAll("#keranjang li");
 
   items.forEach(item => {
 
-    isiKeranjang += `
-      <p>${item.innerText}</p>
-    `;
+    isi += `<p>${item.innerText}</p>`;
   });
-
-  const tanggal = new Date().toLocaleString("id-ID");
 
   const struk = `
     <html>
+
     <head>
 
-      <title>Struk Belanja</title>
+      <title>Struk</title>
 
       <style>
 
         body{
 
-          font-family: Arial;
+          font-family:Arial;
 
           padding:20px;
-
-          width:300px;
         }
 
         h2{
 
           text-align:center;
-        }
-
-        p{
-
-          margin:5px 0;
-        }
-
-        hr{
-
-          border:1px dashed black;
         }
 
       </style>
@@ -168,11 +157,9 @@ function simpanTransaksi() {
 
       <h2>STRUK BELANJA</h2>
 
-      <p>${tanggal}</p>
-
       <hr>
 
-      ${isiKeranjang}
+      ${isi}
 
       <hr>
 
@@ -184,13 +171,12 @@ function simpanTransaksi() {
         ${document.getElementById("kembalian").innerText}
       </h3>
 
-      <hr>
-
       <p>
-        Terima kasih sudah belanja 🙏
+        Terima kasih 🙏
       </p>
 
     </body>
+
     </html>
   `;
 
