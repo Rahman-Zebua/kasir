@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -12,25 +13,34 @@
 <div class="container">
 
   <div class="top">
-    <h1>Aplikasi Kasir</h1>
+    <h1>🛒 Aplikasi Kasir</h1>
 
     <button onclick="toggleDarkMode()" class="dark-btn">
       🌙 Dark Mode
     </button>
   </div>
 
-  <div class="produk">
-    <button onclick="tambahProduk('Indomie',3500)">Indomie - Rp3.500</button>
-    <button onclick="tambahProduk('Teh Botol',5000)">Teh Botol - Rp5.000</button>
-    <button onclick="tambahProduk('Roti',7000)">Roti - Rp7.000</button>
-    <button onclick="tambahProduk('Kopi',4000)">Kopi - Rp4.000</button>
-    <button onclick="tambahProduk('Susu',6000)">Susu - Rp6.000</button>
-    <button onclick="tambahProduk('Biskuit',8000)">Biskuit - Rp8.000</button>
-    <button onclick="tambahProduk('Air Mineral',3000)">Air Mineral - Rp3.000</button>
-    <button onclick="tambahProduk('Chitato',10000)">Chitato - Rp10.000</button>
-    <button onclick="tambahProduk('Coklat',9000)">Coklat - Rp9.000</button>
-    <button onclick="tambahProduk('Permen',2000)">Permen - Rp2.000</button>
-  </div>
+  <hr>
+
+  <h2>Tambah Produk Baru</h2>
+
+  <input type="text"
+  id="namaProduk"
+  placeholder="Nama Produk">
+
+  <input type="number"
+  id="hargaProduk"
+  placeholder="Harga Produk">
+
+  <button onclick="buatProduk()">
+    Tambah Produk
+  </button>
+
+  <hr>
+
+  <h2>Daftar Produk</h2>
+
+  <div class="produk"></div>
 
   <hr>
 
@@ -40,18 +50,32 @@
 
   <h3 id="total">Total: Rp0</h3>
 
-  <input type="number" id="bayar" placeholder="Masukkan uang bayar">
+  <input type="number"
+  id="bayar"
+  placeholder="Masukkan uang bayar">
 
-  <button onclick="hitungKembalian()">Hitung Kembalian</button>
+  <button onclick="hitungKembalian()">
+    Hitung Kembalian
+  </button>
 
-  <h3 id="kembalian">Kembalian: Rp0</h3>
+  <h3 id="kembalian">
+    Kembalian: Rp0
+  </h3>
 
   <div class="aksi">
-    <button onclick="resetKasir()">Reset</button>
 
-    <button onclick="simpanTransaksi()">Simpan</button>
+    <button onclick="resetKasir()">
+      Reset
+    </button>
 
-    <button onclick="window.print()">Cetak Struk</button>
+    <button onclick="simpanTransaksi()">
+      Simpan
+    </button>
+
+    <button onclick="window.print()">
+      Cetak Struk
+    </button>
+
   </div>
 
 </div>
@@ -60,3 +84,4 @@
 
 </body>
 </html>
+```
