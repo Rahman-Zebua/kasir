@@ -3,10 +3,11 @@ let total = 0;
 function buatProduk() {
 
   const nama = document.getElementById("namaProduk").value;
+
   const harga = document.getElementById("hargaProduk").value;
 
   if (nama === "" || harga === "") {
-    alert("Isi nama dan harga");
+    alert("Isi nama dan harga produk!");
     return;
   }
 
@@ -21,6 +22,7 @@ function buatProduk() {
   document.getElementById("daftarProduk").appendChild(tombol);
 
   document.getElementById("namaProduk").value = "";
+
   document.getElementById("hargaProduk").value = "";
 }
 
@@ -28,27 +30,11 @@ function tambahKeKeranjang(nama, harga) {
 
   total += harga;
 
-  const li = document.createElement("li");
+  const item = document.createElement("p");
 
-  li.innerHTML =
-    nama +
-    " - Rp" +
-    harga +
-    ' <button onclick="hapusItem(this,' +
-    harga +
-    ')">Hapus</button>';
+  item.innerHTML = nama + " - Rp" + harga;
 
-  document.getElementById("keranjang").appendChild(li);
-
-  document.getElementById("total").innerHTML =
-    "Total: Rp" + total;
-}
-
-function hapusItem(button, harga) {
-
-  total -= harga;
-
-  button.parentElement.remove();
+  document.getElementById("keranjang").appendChild(item);
 
   document.getElementById("total").innerHTML =
     "Total: Rp" + total;
@@ -56,8 +42,14 @@ function hapusItem(button, harga) {
 
 function hitungKembalian() {
 
-  const bayar =
-    parseInt(document.getElementById("bayar").value);
+  const bayar = parseInt(
+    document.getElementById("bayar").value
+  );
+
+  if (isNaN(bayar)) {
+    alert("Masukkan uang bayar!");
+    return;
+  }
 
   const kembali = bayar - total;
 
@@ -82,6 +74,20 @@ function resetKasir() {
 
 function cetakStruk() {
 
-  window.print();
+  let isiStruk = `
+    <h2>STRUK BELANJA</h2>
+    <hr>
+    ${document.getElementById("keranjang").innerHTML}
+    <hr>
+    <h3>${document.getElementById("total").innerHTML}</h3>
+    <h3>${document.getElementById("kembalian").innerHTML}</h3>
+  `;
+
+  let halaman = window.open("", "", "width=400,height=600");
+
+  halaman.document.write(isiStruk);
+
+  halaman.document.close();
+
+  halaman.print();
 }
-```
