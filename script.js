@@ -23,7 +23,7 @@ function buatProduk() {
     document.createElement("button");
 
   tombol.innerText =
-    `${nama} - Rp${harga}`;
+    `${nama} - Rp${harga.toLocaleString("id-ID")}`;
 
   tombol.onclick = function () {
 
@@ -46,7 +46,7 @@ function tambahProduk(nama, harga) {
     document.createElement("li");
 
   item.innerHTML = `
-    ${nama} - Rp${harga}
+    ${nama} - Rp${harga.toLocaleString("id-ID")}
 
     <button onclick="hapusItem(this, ${harga})">
       Hapus
@@ -72,7 +72,7 @@ function hapusItem(button, harga) {
 function updateTotal() {
 
   document.getElementById("total").innerText =
-    `Total: Rp${total}`;
+    `Total: Rp${total.toLocaleString("id-ID")}`;
 }
 
 function resetKasir() {
@@ -104,16 +104,103 @@ function hitungKembalian() {
   const kembali = bayar - total;
 
   document.getElementById("kembalian").innerText =
-    `Kembalian: Rp${kembali}`;
-}
-
-function simpanTransaksi() {
-
-  alert("Transaksi berhasil disimpan!");
+    `Kembalian: Rp${kembali.toLocaleString("id-ID")}`;
 }
 
 function toggleDarkMode() {
 
   document.body.classList.toggle("dark");
+}
+
+function simpanTransaksi() {
+
+  let isiKeranjang = "";
+
+  const items =
+    document.querySelectorAll("#keranjang li");
+
+  items.forEach(item => {
+
+    isiKeranjang += `
+      <p>${item.innerText}</p>
+    `;
+  });
+
+  const tanggal = new Date().toLocaleString("id-ID");
+
+  const struk = `
+    <html>
+    <head>
+
+      <title>Struk Belanja</title>
+
+      <style>
+
+        body{
+
+          font-family: Arial;
+
+          padding:20px;
+
+          width:300px;
+        }
+
+        h2{
+
+          text-align:center;
+        }
+
+        p{
+
+          margin:5px 0;
+        }
+
+        hr{
+
+          border:1px dashed black;
+        }
+
+      </style>
+
+    </head>
+
+    <body>
+
+      <h2>STRUK BELANJA</h2>
+
+      <p>${tanggal}</p>
+
+      <hr>
+
+      ${isiKeranjang}
+
+      <hr>
+
+      <h3>
+        ${document.getElementById("total").innerText}
+      </h3>
+
+      <h3>
+        ${document.getElementById("kembalian").innerText}
+      </h3>
+
+      <hr>
+
+      <p>
+        Terima kasih sudah belanja 🙏
+      </p>
+
+    </body>
+    </html>
+  `;
+
+  const win =
+    window.open("", "", "width=400,height=600");
+
+  win.document.write(struk);
+
+  win.document.close();
+
+  win.print();
 }
 ```
