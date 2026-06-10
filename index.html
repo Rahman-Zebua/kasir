@@ -3,19 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Aplikasi Kasir</title>
+  <title>Aplikasi Kasir Modern</title>
 
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
 
-  <h1>Aplikasi Kasir</h1>
+  <h1>🛒 Aplikasi Kasir</h1>
 
-  <input type="text" id="namaProduk" placeholder="Nama Produk">
+  <hr>
 
-  <input type="number" id="hargaProduk" placeholder="Harga Produk">
+  <h2>Tambah Produk Baru</h2>
+
+  <input
+    type="text"
+    id="namaProduk"
+    placeholder="Nama Produk"
+  >
+
+  <input
+    type="number"
+    id="hargaProduk"
+    placeholder="Harga Produk"
+  >
 
   <button onclick="buatProduk()">
     Tambah Produk
@@ -23,21 +36,25 @@
 
   <hr>
 
+  <h2>Daftar Produk</h2>
+
   <div id="daftarProduk"></div>
 
   <hr>
 
   <h2>Keranjang</h2>
 
-  <ul id="keranjang"></ul>
+  <div id="keranjang"></div>
 
   <h3 id="total">
     Total: Rp0
   </h3>
 
-  <input type="number"
-  id="bayar"
-  placeholder="Uang Bayar">
+  <input
+    type="number"
+    id="bayar"
+    placeholder="Uang Bayar"
+  >
 
   <button onclick="hitungKembalian()">
     Hitung Kembalian
@@ -60,3 +77,4 @@
 <script src="script.js"></script>
 
 </body>
+</html>
