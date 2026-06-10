@@ -2,55 +2,43 @@ let total = 0;
 
 function buatProduk() {
 
-  let nama =
-    document.getElementById("namaProduk").value;
+  const nama = document.getElementById("namaProduk").value;
+  const harga = document.getElementById("hargaProduk").value;
 
-  let harga =
-    document.getElementById("hargaProduk").value;
-
-  if (nama == "" || harga == "") {
-
-    alert("Isi nama dan harga!");
-
+  if (nama === "" || harga === "") {
+    alert("Isi nama dan harga");
     return;
   }
 
-  harga = parseInt(harga);
+  const tombol = document.createElement("button");
 
-  let tombol =
-    document.createElement("button");
-
-  tombol.innerHTML =
-    nama + " - Rp" + harga;
+  tombol.innerHTML = nama + " - Rp" + harga;
 
   tombol.onclick = function () {
-
-    tambahKeKeranjang(nama, harga);
+    tambahKeKeranjang(nama, parseInt(harga));
   };
 
-  document
-    .getElementById("daftarProduk")
-    .appendChild(tombol);
+  document.getElementById("daftarProduk").appendChild(tombol);
 
   document.getElementById("namaProduk").value = "";
-
   document.getElementById("hargaProduk").value = "";
 }
 
 function tambahKeKeranjang(nama, harga) {
 
-  let li =
-    document.createElement("li");
+  total += harga;
+
+  const li = document.createElement("li");
 
   li.innerHTML =
-    nama + " - Rp" + harga +
-    ' <button onclick="hapusItem(this,' + harga + ')">Hapus</button>';
+    nama +
+    " - Rp" +
+    harga +
+    ' <button onclick="hapusItem(this,' +
+    harga +
+    ')">Hapus</button>';
 
-  document
-    .getElementById("keranjang")
-    .appendChild(li);
-
-  total += harga;
+  document.getElementById("keranjang").appendChild(li);
 
   document.getElementById("total").innerHTML =
     "Total: Rp" + total;
@@ -58,9 +46,9 @@ function tambahKeKeranjang(nama, harga) {
 
 function hapusItem(button, harga) {
 
-  button.parentElement.remove();
-
   total -= harga;
+
+  button.parentElement.remove();
 
   document.getElementById("total").innerHTML =
     "Total: Rp" + total;
@@ -68,12 +56,10 @@ function hapusItem(button, harga) {
 
 function hitungKembalian() {
 
-  let bayar =
-    document.getElementById("bayar").value;
+  const bayar =
+    parseInt(document.getElementById("bayar").value);
 
-  bayar = parseInt(bayar);
-
-  let kembali = bayar - total;
+  const kembali = bayar - total;
 
   document.getElementById("kembalian").innerHTML =
     "Kembalian: Rp" + kembali;
@@ -81,9 +67,9 @@ function hitungKembalian() {
 
 function resetKasir() {
 
-  document.getElementById("keranjang").innerHTML = "";
-
   total = 0;
+
+  document.getElementById("keranjang").innerHTML = "";
 
   document.getElementById("total").innerHTML =
     "Total: Rp0";
@@ -98,3 +84,4 @@ function cetakStruk() {
 
   window.print();
 }
+```
