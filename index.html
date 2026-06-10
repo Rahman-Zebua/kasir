@@ -1,45 +1,62 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aplikasi Kasir</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aplikasi Kasir Modern</title>
 
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+<div class="container">
+
+  <div class="top">
     <h1>Aplikasi Kasir</h1>
 
-    <button onclick="tambahProduk('Indomie', 3500)">Indomie - Rp3.500</button>
+    <button onclick="toggleDarkMode()" class="dark-btn">
+      🌙 Dark Mode
+    </button>
+  </div>
 
-    <button onclick="tambahProduk('Teh Botol', 5000)">Teh Botol - Rp5.000</button>
+  <div class="produk">
+    <button onclick="tambahProduk('Indomie',3500)">Indomie - Rp3.500</button>
+    <button onclick="tambahProduk('Teh Botol',5000)">Teh Botol - Rp5.000</button>
+    <button onclick="tambahProduk('Roti',7000)">Roti - Rp7.000</button>
+    <button onclick="tambahProduk('Kopi',4000)">Kopi - Rp4.000</button>
+    <button onclick="tambahProduk('Susu',6000)">Susu - Rp6.000</button>
+    <button onclick="tambahProduk('Biskuit',8000)">Biskuit - Rp8.000</button>
+    <button onclick="tambahProduk('Air Mineral',3000)">Air Mineral - Rp3.000</button>
+    <button onclick="tambahProduk('Chitato',10000)">Chitato - Rp10.000</button>
+    <button onclick="tambahProduk('Coklat',9000)">Coklat - Rp9.000</button>
+    <button onclick="tambahProduk('Permen',2000)">Permen - Rp2.000</button>
+  </div>
 
-    <button onclick="tambahProduk('Roti', 7000)">Roti - Rp7.000</button>
+  <hr>
 
-    <button onclick="tambahProduk('Kopi', 4000)">Kopi - Rp4.000</button>
+  <h2>Keranjang</h2>
 
-    <button onclick="tambahProduk('Susu', 6000)">Susu - Rp6.000</button>
+  <ul id="keranjang"></ul>
 
-    <button onclick="tambahProduk('Biskuit', 8000)">Biskuit - Rp8.000</button>
+  <h3 id="total">Total: Rp0</h3>
 
-    <button onclick="tambahProduk('Air Mineral', 3000)">Air Mineral - Rp3.000</button>
+  <input type="number" id="bayar" placeholder="Masukkan uang bayar">
 
-    <button onclick="tambahProduk('Chitato', 10000)">Chitato - Rp10.000</button>
+  <button onclick="hitungKembalian()">Hitung Kembalian</button>
 
-    <button onclick="tambahProduk('Coklat', 9000)">Coklat - Rp9.000</button>
+  <h3 id="kembalian">Kembalian: Rp0</h3>
 
-    <button onclick="tambahProduk('Permen', 2000)">Permen - Rp2.000</button>
+  <div class="aksi">
+    <button onclick="resetKasir()">Reset</button>
 
-    <hr>
+    <button onclick="simpanTransaksi()">Simpan</button>
 
-    <h2>Keranjang</h2>
+    <button onclick="window.print()">Cetak Struk</button>
+  </div>
 
-    <ul id="keranjang"></ul>
+</div>
 
-    <h3 id="total">Total: Rp0</h3>
-
-    <script src="script.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
